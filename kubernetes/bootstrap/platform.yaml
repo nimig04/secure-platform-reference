@@ -1,0 +1,14 @@
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:nimig04/secure-platform-reference.git
+        revision: main
+        directories:
+          - path: kubernetes/platform/apps/*
+
+  template:
+    spec:
+      source:
+        repoURL: git@github.com:nimig04/secure-platform-reference.git
+        targetRevision: main
+        path: "{{path}}"
