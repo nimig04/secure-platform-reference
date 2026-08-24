@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: git@github.com:nimig04/secure-platform-reference.git 
-    targetRevision: HEAD
+    targetRevision: main
     path: kubernetes/platform/argocd
 
   destination:
