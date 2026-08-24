@@ -1,0 +1,4 @@
+kubernetes_version: "1.36"
+pod_network_cidr: "10.244.0.0/16"
+control_plane_ip: "192.168.8.30"
+containerd_config_path: "/etc/containerd/config.toml"
