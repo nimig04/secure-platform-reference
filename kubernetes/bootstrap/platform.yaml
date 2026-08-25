@@ -1,3 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform
+  namespace: argocd
+
 spec:
   generators:
     - git:
@@ -7,8 +13,25 @@ spec:
           - path: kubernetes/platform/apps/*
 
   template:
+    metadata:
+      name: "{{path.basename}}"
+
     spec:
+      project: default
+
       source:
         repoURL: git@github.com:nimig04/secure-platform-reference.git
         targetRevision: main
         path: "{{path}}"
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{path.basename}}"
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+        syncOptions:
+          - CreateNamespace=true
